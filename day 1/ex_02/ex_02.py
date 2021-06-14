@@ -2,15 +2,21 @@
 
 import sys
 
-def show_transactions(list):
-    for i in list:
-        if (i > 0):
-            print("You received", i ,"euros")
-        if (i < 0):
-            print("You spent", i * -1 ,"euros")
+class budget:
+    _transactions = []
+    def add_transactions(self, add):
+        self._transactions.extend(add)
+    def show_transactions(self):
+        for i in self._transactions:
+            if (i > 0):
+                print("You received", i ,"euros")
+            if (i < 0):
+                print("You spent", i * -1 ,"euros")
 
 def main(argv):
     transactions = [512, 42.08, -12]
-    show_transactions(transactions)
+    wallet = budget()
+    wallet.add_transactions(transactions)
+    wallet.show_transactions()
 
 main(sys.argv)
